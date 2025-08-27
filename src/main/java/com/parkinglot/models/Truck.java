@@ -14,7 +14,6 @@ public class Truck extends Vehicle {
 
     @Override
     public List<SpaceSize> getCompatibleSpaceSizes() {
-        // TODO: Trucks can only park in Large spaces
-        throw new NotImplementedException();
+        return List.of(SpaceSize.LARGE);
     }
 }

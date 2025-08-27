@@ -4,6 +4,7 @@ import com.parkinglot.exceptions.NotImplementedException;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.temporal.TemporalUnit;
 
 public class ParkingTicket {
     private final String ticketId;
@@ -14,7 +15,10 @@ public class ParkingTicket {
 
     public ParkingTicket(String ticketId, String licensePlate, String spaceId, LocalDateTime entryTime) {
         // TODO: Implement constructor
-        throw new NotImplementedException();
+        this.ticketId = ticketId;
+        this.licensePlate = licensePlate;
+        this.spaceId = spaceId;
+        this.entryTime = entryTime;
     }
 
     public String getTicketId() {
@@ -39,18 +43,19 @@ public class ParkingTicket {
 
     public void markExit(LocalDateTime exitTime) {
         // TODO: Set the exit time
-        throw new NotImplementedException();
+        this.exitTime = exitTime;
     }
 
     public Duration getParkingDuration() {
         // TODO: Calculate parking duration
         // If exitTime is null, use current time
-        throw new NotImplementedException();
+        LocalDateTime exit = exitTime == null ? LocalDateTime.now() : exitTime;
+        return Duration.ofSeconds(exit.getSecond() - entryTime.getSecond());
     }
 
     public BigDecimal calculateFee(BigDecimal hourlyRate) {
         // TODO: Calculate parking fee based on duration and hourly rate
         // Round up to the next hour for partial hours
-        throw new NotImplementedException();
+        return hourlyRate.multiply(BigDecimal.valueOf((getParkingDuration().toHours())));
     }
 }

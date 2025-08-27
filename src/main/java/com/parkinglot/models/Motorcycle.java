@@ -12,7 +12,6 @@ public class Motorcycle extends Vehicle {
 
     @Override
     public List<SpaceSize> getCompatibleSpaceSizes() {
-        // TODO: Motorcycles can park in any size space
-        throw new NotImplementedException();
+        return List.of(SpaceSize.SMALL, SpaceSize.MEDIUM, SpaceSize.LARGE);
     }
 }

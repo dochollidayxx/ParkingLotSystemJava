@@ -12,7 +12,6 @@ public class Car extends Vehicle {
 
     @Override
     public List<SpaceSize> getCompatibleSpaceSizes() {
-        // TODO: Cars can park in Medium or Large spaces
-        throw new NotImplementedException();
+        return List.of(SpaceSize.MEDIUM, SpaceSize.LARGE);
     }
 }

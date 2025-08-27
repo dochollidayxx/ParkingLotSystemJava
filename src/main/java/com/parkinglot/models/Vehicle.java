@@ -15,7 +15,13 @@ public abstract class Vehicle {
         // TODO: Implement constructor validation
         // Should validate that licensePlate is not null or empty
         // Should set the licensePlate and type fields
-        throw new NotImplementedException();
+        if (licensePlate == null || licensePlate.isEmpty()) {
+            //throw new IllegalArgumentException("Invalid license plate");
+            System.err.println("Invalid plate provided");
+        }
+        
+        this.licensePlate = licensePlate;
+        this.type = type;
     }
 
     public String getLicensePlate() {

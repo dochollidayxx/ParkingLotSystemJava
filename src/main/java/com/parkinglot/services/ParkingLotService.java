@@ -9,6 +9,7 @@ import com.parkinglot.models.ParkingTicket;
 import com.parkinglot.models.Vehicle;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class ParkingLotService implements IParkingLotService {
@@ -37,7 +38,24 @@ public class ParkingLotService implements IParkingLotService {
         // Small spaces: S001, S002, etc.
         // Medium spaces: M001, M002, etc.
         // Large spaces: L001, L002, etc.
-        throw new NotImplementedException();
+
+        List<ParkingSpace> l1 = new ArrayList<>();
+        for (int i = 0; i < smallSpaces; i++) {
+            l1.add(new ParkingSpace(String.format("S%03d", i+1), SpaceSize.SMALL));
+        }
+        spaces.put(SpaceSize.SMALL, l1);
+
+        List<ParkingSpace> l2 = new ArrayList<>();
+        for (int i = 0; i < mediumSpaces; i++) {
+            l2.add(new ParkingSpace(String.format("M%03d", i+1), SpaceSize.MEDIUM));
+        }
+        spaces.put(SpaceSize.MEDIUM, l1);
+
+        List<ParkingSpace> l3 = new ArrayList<>();
+        for (int i = 0; i < largeSpaces; i++) {
+            l3.add(new ParkingSpace(String.format("L%03d", i+1), SpaceSize.LARGE));
+        }
+        spaces.put(SpaceSize.LARGE, l3);
     }
 
     @Override
@@ -48,7 +66,13 @@ public class ParkingLotService implements IParkingLotService {
         // 3. Park the vehicle in the space
         // 4. Create and return a parking ticket
         // 5. Store the ticket in _activeTickets
-        throw new NotImplementedException();
+        
+        ParkingSpace space = findAvailableSpace(vehicle);
+        space.parkVehicle(vehicle);
+        
+        ParkingTicket ticket = new ParkingTicket(generateTicketId(), vehicle.getLicensePlate(), space.getId(), LocalDateTime.now());
+        activeTickets.put(ticket.getTicketId(), ticket);
+        return ticket;
     }
 
     @Override
