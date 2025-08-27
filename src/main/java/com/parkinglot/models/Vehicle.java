@@ -37,36 +37,3 @@ public abstract class Vehicle {
 
     public abstract List<SpaceSize> getCompatibleSpaceSizes();
 }
-
-public class Motorcycle extends Vehicle {
-    public Motorcycle(String licensePlate) {
-        super(licensePlate, VehicleType.MOTORCYCLE);
-    }
-
-    @Override
-    public List<SpaceSize> getCompatibleSpaceSizes() {
-        return Arrays.asList(SpaceSize.SMALL, SpaceSize.MEDIUM, SpaceSize.LARGE);
-    }
-}
-
-public class Car extends Vehicle {
-    public Car(String licensePlate) {
-        super(licensePlate, VehicleType.CAR);
-    }
-
-    @Override
-    public List<SpaceSize> getCompatibleSpaceSizes() {
-        return Arrays.asList(SpaceSize.MEDIUM, SpaceSize.LARGE);
-    }
-}
-
-public class Truck extends Vehicle {
-    public Truck(String licensePlate) {
-        super(licensePlate, VehicleType.TRUCK);
-    }
-
-    @Override
-    public List<SpaceSize> getCompatibleSpaceSizes() {
-        return Arrays.asList(SpaceSize.LARGE);
-    }
-}

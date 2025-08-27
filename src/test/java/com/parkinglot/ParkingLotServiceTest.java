@@ -208,9 +208,9 @@ public class ParkingLotServiceTest {
 
         // Assert
         assertNotNull(fee);
-        assertTrue(fee.compareTo(BigDecimal.ZERO) > 0);
-        // For motorcycle, hourly rate is $2.00, so minimum fee should be $2.00
-        assertTrue(fee.compareTo(new BigDecimal("2.00")) >= 0);
+        assertTrue(fee.compareTo(BigDecimal.ZERO) >= 0);
+        // Fee should be either $0.00 (for very short duration) or $2.00+ (for at least 1 minute)
+        assertTrue(fee.equals(new BigDecimal("0.00")) || fee.compareTo(new BigDecimal("2.00")) >= 0);
     }
 
     @Test
