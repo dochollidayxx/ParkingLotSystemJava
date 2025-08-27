@@ -1,0 +1,23 @@
+version: 1.0
+configuration:
+  has_webserver: false
+  readonly_paths:
+    - src/test/.*
+    - target/.*
+    - .*\.Tests\.java$
+    - INTERVIEWER_NOTES\.md
+    - hackerrank\.yml
+  scoring:
+    command: mvn test -Dtest="*" -Dsurefire.reportFormat=plain -Dsurefire.useFile=false --quiet
+    files:
+      - target/surefire-reports/TEST-*.xml
+  ide_config:
+    default_open_files:
+      - README.md
+      - src/main/java/com/parkinglot/models/Vehicle.java
+      - src/main/java/com/parkinglot/services/ParkingLotService.java
+      - src/test/java/com/parkinglot/ParkingLotServiceTest.java
+    project_menu:
+      install: mvn clean compile
+      run: mvn compile
+      test: mvn test
