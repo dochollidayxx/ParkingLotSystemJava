@@ -1,7 +1,7 @@
 package com.parkinglot.models;
 
 import com.parkinglot.enums.SpaceSize;
-import com.parkinglot.exceptions.ParkingException;
+import com.parkinglot.exceptions.NotImplementedException;
 
 public class ParkingSpace {
     private final String id;
@@ -32,33 +32,22 @@ public class ParkingSpace {
         return currentVehicle;
     }
 
-    public void parkVehicle(Vehicle vehicle) throws ParkingException {
-        if (isOccupied) {
-            throw new ParkingException("Space is already occupied");
-        }
-        if (!canFitVehicle(vehicle)) {
-            throw new ParkingException("Vehicle cannot fit in this space");
-        }
-        
-        this.currentVehicle = vehicle;
-        this.isOccupied = true;
+    public void parkVehicle(Vehicle vehicle) {
+        // TODO: Implement parking logic
+        // Should set isOccupied to true and store the vehicle
+        // Should throw exception if space is already occupied
+        throw new NotImplementedException();
     }
 
-    public Vehicle removeVehicle() throws ParkingException {
-        if (!isOccupied) {
-            throw new ParkingException("Space is not occupied");
-        }
-        
-        Vehicle vehicle = this.currentVehicle;
-        this.currentVehicle = null;
-        this.isOccupied = false;
-        return vehicle;
+    public Vehicle removeVehicle() {
+        // TODO: Implement unparking logic
+        // Should return the vehicle and mark space as available
+        // Should throw exception if space is not occupied
+        throw new NotImplementedException();
     }
 
     public boolean canFitVehicle(Vehicle vehicle) {
-        if (vehicle == null) {
-            return false;
-        }
-        return vehicle.getCompatibleSpaceSizes().contains(this.size);
+        // TODO: Check if this space can accommodate the given vehicle
+        throw new NotImplementedException();
     }
 }

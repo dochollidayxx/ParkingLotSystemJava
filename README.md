@@ -1,7 +1,7 @@
-# Parking Lot System - Java Implementation
+# Parking Lot System - Coding Challenge
 
 ## Overview
-This is a Java implementation of a parking management system for a multi-level parking lot. This system handles vehicle parking, tracking, and provides various management capabilities.
+Design and implement a parking management system for a multi-level parking lot. This system should handle vehicle parking, tracking, and provide various management capabilities.
 
 ## Problem Statement
 
@@ -32,20 +32,22 @@ You are tasked with implementing a parking lot management system with the follow
    - Calculate parking duration
    - Store vehicle and space information
 
-### Additional Features Implemented
+### Additional Requirements (Implement at least 2)
 
 5. **Fee Calculation**
-   - Hourly rate-based fee calculation
+   - Implement hourly rate-based fee calculation
    - Different rates for different vehicle types
-   - Support for partial hour billing (rounds up)
+   - Support for partial hour billing
 
 6. **Search Capabilities**
    - Find a vehicle by license plate
    - Get all vehicles of a specific type
+   - Get parking history for a time period
 
 7. **Statistics & Reporting**
+   - Track peak usage times
    - Calculate occupancy rate
-   - Track total capacity and occupied spaces
+   - Generate daily summary reports
 
 ## Project Structure
 
@@ -80,6 +82,13 @@ parking-lot-system/
 └── README.md
 ```
 
+## Your Task
+
+1. **Complete the implementation** of the classes in the `src/main/java/com/parkinglot` folder
+2. **Fix all failing unit tests** in the `src/test/java/com/parkinglot` folder
+3. **Add at least 2 additional features** from the Additional Requirements section
+4. **Write tests** for any new features you implement
+
 ## Getting Started
 
 ### Prerequisites
@@ -101,7 +110,9 @@ mvn test
 mvn clean test jacoco:report
 ```
 
-## Usage Example
+## Expected Usage Example
+
+Once you complete the implementation, your code should work like this:
 
 ```java
 // Create a parking lot with 2 small, 3 medium, and 2 large spaces
@@ -129,13 +140,13 @@ Vehicle unparkedVehicle = parkingLot.unparkVehicle(motorcycleTicket.getTicketId(
 System.out.println("Unparked: " + unparkedVehicle.getLicensePlate());
 ```
 
-## Features
+## Implementation Requirements
 
-- **Thread-safe operations**: The implementation uses appropriate data structures for concurrent access
-- **Comprehensive error handling**: Proper exception handling for invalid operations
+- **Thread-safe operations**: Use appropriate data structures for concurrent access
+- **Comprehensive error handling**: Proper exception handling and validation
 - **Flexible pricing**: Different hourly rates for different vehicle types
-- **Smart space allocation**: Vehicles are assigned to the smallest suitable space
-- **Complete test coverage**: Unit tests for all major functionality
+- **Smart space allocation**: Vehicles should be assigned to the smallest suitable space
+- **Complete test coverage**: All unit tests must pass
 
 ## Hourly Rates
 - Motorcycle: $2.00/hour
@@ -146,9 +157,21 @@ System.out.println("Unparked: " + unparkedVehicle.getLicensePlate());
 This project was designed to be completed within **90 minutes** for interview purposes.
 
 ## Evaluation Criteria
-- **Correctness**: All unit tests pass
-- **Code Quality**: Clean, readable, and maintainable code
-- **Design**: Good use of OOP principles and design patterns
-- **Error Handling**: Appropriate exception handling and validation
-- **Testing**: Comprehensive test coverage
-- **Performance**: Efficient algorithms and data structures
+
+Your solution will be evaluated based on:
+
+1. **Correctness**: All unit tests pass
+2. **Code Quality**: Clean, readable, and maintainable code
+3. **Design**: Good use of OOP principles and design patterns
+4. **Error Handling**: Appropriate exception handling and validation
+5. **Testing**: Comprehensive test coverage for new features
+6. **Performance**: Efficient algorithms and data structures
+7. **Documentation**: Clear code comments and documentation
+
+## Submission
+
+1. Ensure all tests pass
+2. Commit your changes with meaningful commit messages
+3. Push to your fork or create a pull request
+
+Good luck!

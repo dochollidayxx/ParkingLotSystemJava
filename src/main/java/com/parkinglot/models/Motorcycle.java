@@ -2,7 +2,7 @@ package com.parkinglot.models;
 
 import com.parkinglot.enums.SpaceSize;
 import com.parkinglot.enums.VehicleType;
-import java.util.Arrays;
+import com.parkinglot.exceptions.NotImplementedException;
 import java.util.List;
 
 public class Motorcycle extends Vehicle {
@@ -12,6 +12,7 @@ public class Motorcycle extends Vehicle {
 
     @Override
     public List<SpaceSize> getCompatibleSpaceSizes() {
-        return Arrays.asList(SpaceSize.SMALL, SpaceSize.MEDIUM, SpaceSize.LARGE);
+        // TODO: Motorcycles can park in any size space
+        throw new NotImplementedException();
     }
 }

@@ -1,7 +1,7 @@
 package com.parkinglot.models;
 
+import com.parkinglot.exceptions.NotImplementedException;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -13,23 +13,8 @@ public class ParkingTicket {
     private LocalDateTime exitTime;
 
     public ParkingTicket(String ticketId, String licensePlate, String spaceId, LocalDateTime entryTime) {
-        if (ticketId == null || ticketId.trim().isEmpty()) {
-            throw new IllegalArgumentException("Ticket ID cannot be null or empty");
-        }
-        if (licensePlate == null || licensePlate.trim().isEmpty()) {
-            throw new IllegalArgumentException("License plate cannot be null or empty");
-        }
-        if (spaceId == null || spaceId.trim().isEmpty()) {
-            throw new IllegalArgumentException("Space ID cannot be null or empty");
-        }
-        if (entryTime == null) {
-            throw new IllegalArgumentException("Entry time cannot be null");
-        }
-
-        this.ticketId = ticketId;
-        this.licensePlate = licensePlate;
-        this.spaceId = spaceId;
-        this.entryTime = entryTime;
+        // TODO: Implement constructor
+        throw new NotImplementedException();
     }
 
     public String getTicketId() {
@@ -53,31 +38,19 @@ public class ParkingTicket {
     }
 
     public void markExit(LocalDateTime exitTime) {
-        if (exitTime == null) {
-            throw new IllegalArgumentException("Exit time cannot be null");
-        }
-        if (exitTime.isBefore(entryTime)) {
-            throw new IllegalArgumentException("Exit time cannot be before entry time");
-        }
-        this.exitTime = exitTime;
+        // TODO: Set the exit time
+        throw new NotImplementedException();
     }
 
     public Duration getParkingDuration() {
-        LocalDateTime endTime = (exitTime != null) ? exitTime : LocalDateTime.now();
-        return Duration.between(entryTime, endTime);
+        // TODO: Calculate parking duration
+        // If exitTime is null, use current time
+        throw new NotImplementedException();
     }
 
     public BigDecimal calculateFee(BigDecimal hourlyRate) {
-        if (hourlyRate == null || hourlyRate.compareTo(BigDecimal.ZERO) < 0) {
-            throw new IllegalArgumentException("Hourly rate must be positive");
-        }
-
-        Duration duration = getParkingDuration();
-        long minutes = duration.toMinutes();
-        
+        // TODO: Calculate parking fee based on duration and hourly rate
         // Round up to the next hour for partial hours
-        long hours = (minutes + 59) / 60; // This effectively rounds up
-        
-        return hourlyRate.multiply(BigDecimal.valueOf(hours)).setScale(2, RoundingMode.HALF_UP);
+        throw new NotImplementedException();
     }
 }

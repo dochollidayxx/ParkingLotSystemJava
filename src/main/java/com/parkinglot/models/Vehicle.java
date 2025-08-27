@@ -2,8 +2,8 @@ package com.parkinglot.models;
 
 import com.parkinglot.enums.SpaceSize;
 import com.parkinglot.enums.VehicleType;
+import com.parkinglot.exceptions.NotImplementedException;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 
 public abstract class Vehicle {
@@ -12,11 +12,10 @@ public abstract class Vehicle {
     private LocalDateTime entryTime;
 
     protected Vehicle(String licensePlate, VehicleType type) {
-        if (licensePlate == null || licensePlate.trim().isEmpty()) {
-            throw new IllegalArgumentException("License plate cannot be null or empty");
-        }
-        this.licensePlate = licensePlate;
-        this.type = type;
+        // TODO: Implement constructor validation
+        // Should validate that licensePlate is not null or empty
+        // Should set the licensePlate and type fields
+        throw new NotImplementedException();
     }
 
     public String getLicensePlate() {
@@ -35,5 +34,6 @@ public abstract class Vehicle {
         this.entryTime = entryTime;
     }
 
+    // TODO: Add method to determine which parking space sizes this vehicle can use
     public abstract List<SpaceSize> getCompatibleSpaceSizes();
 }
